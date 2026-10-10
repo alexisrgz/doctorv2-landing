@@ -11,7 +11,8 @@
     "check:rules": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-rules.mjs",
     "check": "npm run typecheck && npm run lint && npm run check:rules",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.55.0",

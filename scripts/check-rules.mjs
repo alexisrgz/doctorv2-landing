@@ -76,8 +76,8 @@ for (const file of uiFiles) {
   report(file, source, phoneRegex, "teléfono hardcodeado (usa src/config/site.ts)");
   report(file, source, hexRegex, "color hex hardcodeado (usa los tokens de globals.css)");
   report(file, source, /→/, 'flecha "→" prohibida');
-  report(file, source, /\buppercase\b/, "texto en MAYÚSCULAS prohibido");
-  report(file, source, /\bitalic\b/, "cursivas prohibidas");
+  report(file, source, /(?<![-\w])uppercase\b/, "texto en MAYÚSCULAS prohibido");
+  report(file, source, /(?<![-\w])italic\b/, "cursivas prohibidas");
   report(file, source, /100vh|h-screen|min-h-screen/, "usa svh/dvh en lugar de 100vh");
 }
 

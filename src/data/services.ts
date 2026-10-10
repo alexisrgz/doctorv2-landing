@@ -45,6 +45,8 @@ export type ServicePhoto = {
 export type Service = {
   slug: string;
   name: string;
+  /** Nombre corto para espacios reducidos (barra móvil); si falta, se usa name. */
+  shortName?: string;
   group: ServiceGroupId;
   /** Una línea para tarjetas y metadatos. */
   summary: string;
@@ -130,6 +132,7 @@ export const services: readonly Service[] = [
   {
     slug: "seguimiento-cronico",
     name: "Seguimiento de enfermedades crónicas",
+    shortName: "Seguimiento crónico",
     group: "consultas",
     summary: "Control periódico de hipertensión, diabetes o colesterol alto, con revisión de tus mediciones.",
     includes: [
@@ -222,6 +225,7 @@ export const services: readonly Service[] = [
   {
     slug: "curaciones-menores",
     name: "Curaciones y retiro de puntos",
+    shortName: "Curaciones",
     group: "consultas",
     summary: "Limpieza y curación de heridas pequeñas, cambio de vendaje y retiro de puntos.",
     includes: [
@@ -262,6 +266,7 @@ export const services: readonly Service[] = [
   {
     slug: "chequeo-basico",
     name: "Chequeo preventivo básico",
+    shortName: "Chequeo básico",
     group: "chequeos",
     summary: "Revisión general con estudios de laboratorio básicos y una consulta breve para revisar resultados.",
     includes: [
@@ -307,6 +312,7 @@ export const services: readonly Service[] = [
   {
     slug: "chequeo-completo",
     name: "Chequeo preventivo completo",
+    shortName: "Chequeo completo",
     group: "chequeos",
     summary: "Evaluación amplia de factores de riesgo, estudios ampliados y un plan de seguimiento por escrito.",
     includes: [
@@ -354,6 +360,7 @@ export const services: readonly Service[] = [
   {
     slug: "chequeo-escolar-deportivo",
     name: "Chequeo escolar y deportivo",
+    shortName: "Chequeo escolar",
     group: "chequeos",
     summary: "Revisión de crecimiento, vista y salud general para el regreso a clases o para empezar un deporte.",
     includes: [
