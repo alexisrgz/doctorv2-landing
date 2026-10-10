@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { footerNav, mainNav } from "@/config/nav";
 import { site } from "@/config/site";
 import { services } from "@/data/services";
-import { absoluteUrl } from "@/lib/jsonld";
+import { absoluteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date(site.contentUpdatedAt);

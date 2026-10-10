@@ -40,3 +40,9 @@ Una línea por decisión, con el porqué.
 - Prueba del modo "internal": además de las pruebas de `getBookingHref(…, "internal")`, la suite verifica en el DOM que todo enlace a wa.me sale de `<BookingLink>` (atributo `data-booking`) y que el mismo pedido, en modo "internal", no produce wa.me. Así no hace falta un segundo build con la constante cambiada.
 - La prueba de "CTAs visibles sin scroll" corre con movimiento reducido (layout final); una prueba aparte, con movimiento activo, verifica que el retraso del escalonado de los CTAs sea de 250ms o menos y que terminen opacos.
 - `public/images/.gitkeep`: la carpeta de fotos existe vacía; el sitio se ve completo con placeholders.
+
+## Correcciones tras el despliegue
+
+- Grupo A: `getSiteUrl()` en `src/lib/site-url.ts` es la única fuente de la URL base (NEXT_PUBLIC_SITE_URL → `https://${VERCEL_PROJECT_PRODUCTION_URL}` → `http://localhost:3000`). Se quitó `url` de `src/config/site.ts`, porque ahí no había forma de leer la variable de Vercel sin duplicar la lógica. `absoluteUrl()` vive junto a ella y la usan metadataBase, canonical/og:url (ahora absolutos), sitemap, robots y JSON-LD; la og:image se resuelve con metadataBase.
+- Grupo A: `check-rules` falla si `vercel.app`, `localhost` o esas variables de entorno aparecen fuera de `site-url.ts`.
+- Grupo A: la prueba compara contra `getSiteUrl()` evaluada en el proceso de Playwright, que es el mismo entorno con el que el `webServer` hace el build.

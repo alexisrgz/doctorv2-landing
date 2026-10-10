@@ -43,6 +43,13 @@ for (const file of srcFiles) {
   report(file, read(file), /wa\.me/, 'enlace de WhatsApp fuera de src/lib/booking.ts');
 }
 
+// 1b. La URL base solo se resuelve en src/lib/site-url.ts
+for (const file of srcFiles) {
+  if (rel(file) === "src/lib/site-url.ts") continue;
+  const source = stripComments(read(file));
+  report(file, source, /vercel\.app|NEXT_PUBLIC_SITE_URL|VERCEL_PROJECT_PRODUCTION_URL|localhost/, "URL base fuera de getSiteUrl()");
+}
+
 // 2. Nada de marca, teléfonos ni colores hardcodeados en componentes y páginas
 const escape = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const familyName = site.doctor.familyName.split(" ")[0];

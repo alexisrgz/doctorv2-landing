@@ -80,7 +80,7 @@ Falla si:
 
 1. Sube el repositorio a GitHub, GitLab o Bitbucket.
 2. En Vercel: **Add New… > Project**, importa el repositorio. Vercel detecta Next.js; no cambies el comando de build (`next build`) ni el directorio de salida.
-3. En **Environment Variables** agrega `NEXT_PUBLIC_SITE_URL` con la URL definitiva, sin diagonal final (por ejemplo `https://drvillasenor.mx`). Sin ella se usa `https://dr-villasenor.vercel.app`, que afecta canonical, sitemap, robots, Open Graph y JSON-LD.
+3. En **Environment Variables** agrega `NEXT_PUBLIC_SITE_URL` con la URL definitiva, sin diagonal final (por ejemplo `https://drvillasenor.mx`). La URL base sale de `getSiteUrl()` (`src/lib/site-url.ts`) en este orden: `NEXT_PUBLIC_SITE_URL` → `https://${VERCEL_PROJECT_PRODUCTION_URL}` (la pone Vercel) → `http://localhost:3000`. Afecta canonical, sitemap, robots, Open Graph y JSON-LD.
 4. **Deploy**. Si después cambias el dominio, actualiza la variable y vuelve a desplegar.
 
 La versión de Node en Vercel debe ser 22 o superior (Project Settings > General > Node.js Version).

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { absoluteUrl } from "./site-url";
 
 type PageMetadataInput = {
   /** Título de la página; si falta, se usa el título por defecto del sitio. */
@@ -14,12 +15,12 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
   return {
     ...(title ? { title } : {}),
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: absoluteUrl(path) },
     openGraph: {
       type: "website",
       locale: site.locale.replace("-", "_"),
       siteName: site.name,
-      url: path,
+      url: absoluteUrl(path),
       ...(title ? { title } : {}),
       description,
     },

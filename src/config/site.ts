@@ -14,7 +14,6 @@ export const site = {
     familyName: "Villaseñor Ríos",
     honorific: "Dr.",
   },
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dr-villasenor.vercel.app").replace(/\/$/, ""),
   locale: "es-MX",
   language: "es",
   timeZone: "America/Mazatlan",

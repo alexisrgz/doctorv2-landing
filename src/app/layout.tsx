@@ -4,11 +4,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { brandColors } from "@/config/brand";
 import { seo } from "@/config/seo";
 import { site } from "@/config/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { bodyFont, displayFont } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(getSiteUrl()),
   title: { default: seo.defaultTitle, template: seo.titleTemplate },
   description: seo.defaultDescription,
   keywords: [...seo.keywords],

@@ -9,6 +9,7 @@ import { dayNames, weekDisplayOrder, weeklyHours, type DayIndex } from "@/data/h
 import type { Faq } from "@/data/faqs";
 import { services, getStartingPrice, type Service } from "@/data/services";
 import { getMapsHref } from "./contact";
+import { absoluteUrl } from "./site-url";
 
 type JsonLd = Record<string, unknown>;
 
@@ -21,10 +22,6 @@ const SCHEMA_DAYS: Record<DayIndex, string> = {
   5: "Friday",
   6: "Saturday",
 };
-
-export function absoluteUrl(path = "/"): string {
-  return new URL(path, `${site.url}/`).toString();
-}
 
 const physicianId = absoluteUrl("/#consultorio");
 
