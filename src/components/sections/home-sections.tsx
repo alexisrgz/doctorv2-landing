@@ -8,6 +8,7 @@ import { practice } from "@/data/practice";
 import { getFeaturedServices } from "@/data/services";
 import { testimonials } from "@/data/testimonials";
 import { BookingLink } from "../booking-link";
+import { columnsFor, metaLayoutFor } from "../card-grid";
 import { CallLink } from "../call-link";
 import { WhatsAppIcon } from "../icons/whatsapp-icon";
 import { StepList } from "../lists";
@@ -68,6 +69,8 @@ export function HomeHero() {
 
 export function FeaturedServices() {
   const { featured } = homePage;
+  const featuredServices = getFeaturedServices();
+  const columns = columnsFor(featuredServices.length);
   return (
     <Section tone="mist" roundedTop labelledBy="destacados-titulo">
       <SectionHeader
@@ -80,10 +83,14 @@ export function FeaturedServices() {
           </Link>
         }
       />
-      <SnapRow label={featured.title} columns={4} className="mt-8 lg:mt-12">
-        {getFeaturedServices().map((service) => (
+      <SnapRow label={featured.title} columns={columns === 1 ? 2 : columns} className="mt-8 lg:mt-12">
+        {featuredServices.map((service) => (
           <li key={service.slug}>
-            <ServiceCard service={service} sizes="(min-width: 1024px) 270px, 82vw" />
+            <ServiceCard
+              service={service}
+              metaLayout={metaLayoutFor(featuredServices.length)}
+              sizes="(min-width: 1024px) 270px, 82vw"
+            />
           </li>
         ))}
       </SnapRow>
@@ -139,11 +146,17 @@ export function DoctorSummary() {
           <p className="mt-4 font-display text-[22px] leading-tight font-bold tracking-[-0.02em]">{doctor.fullName}</p>
           <p className="text-slate">{doctor.role}</p>
           <p className="mt-4 max-w-[55ch]">{copy.text}</p>
-          <dl className="mt-8 grid border-y border-line sm:grid-cols-3">
-            {facts.map((fact) => (
+          {/* Cédula y años comparten fila; el enfoque (texto largo) ocupa una fila completa. */}
+          <dl className="mt-8 grid grid-cols-2 border-y border-line" data-testid="doctor-facts">
+            {facts.map((fact, index) => (
               <div
                 key={fact.label}
-                className="border-b border-line py-4 last:border-b-0 sm:border-b-0 sm:border-l sm:px-5 sm:first:border-l-0 sm:first:pl-0"
+                data-testid="doctor-fact"
+                className={
+                  index === facts.length - 1
+                    ? "col-span-2 border-t border-line py-4"
+                    : `py-4 ${index === 0 ? "border-r border-line pr-5" : "pl-5"}`
+                }
               >
                 <dt className="text-meta text-slate">{fact.label}</dt>
                 <dd className="mt-1 font-display text-[19px] leading-snug font-bold tracking-[-0.01em]">{fact.value}</dd>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { labels } from "@/data/pages/common";
 import { getDurationRange, getStartingPrice, type Service } from "@/data/services";
 import { formatDuration, formatPrice } from "@/lib/format";
+import type { CardMetaLayout } from "./card-grid";
 import { Photo } from "./photo";
 import { SERVICE_ICONS } from "./service-icon";
 
@@ -11,6 +12,13 @@ type ServiceCardProps = {
   /** Nivel del título dentro de la página. */
   headingLevel?: "h2" | "h3";
   sizes?: string;
+  /** Todas las tarjetas de una rejilla usan el mismo: apilado solo en rejillas de 4 columnas (ver card-grid.ts). */
+  metaLayout?: CardMetaLayout;
+};
+
+const META_CLASS: Record<CardMetaLayout, string> = {
+  inline: "flex-row items-center",
+  "stacked-lg": "flex-row items-center lg:flex-col lg:items-start lg:gap-y-1",
 };
 
 /** Tarjeta de servicio: foto suave, nombre, una línea, duración y precio desde. Toda la tarjeta es el enlace. */
@@ -18,6 +26,7 @@ export function ServiceCard({
   service,
   headingLevel: Heading = "h3",
   sizes = "(min-width: 1024px) 380px, 82vw",
+  metaLayout = "inline",
 }: ServiceCardProps) {
   const { min, max } = getDurationRange(service);
   const titleId = `servicio-${service.slug}-titulo`;
@@ -48,7 +57,10 @@ export function ServiceCard({
         <p id={summaryId} className="mt-2 text-slate">
           {service.summary}
         </p>
-        <p className="mt-auto flex flex-wrap gap-x-5 gap-y-1 pt-4 text-meta font-bold">
+        <p
+          data-testid="service-card-meta"
+          className={`mt-auto flex flex-nowrap gap-x-5 pt-4 text-meta font-bold whitespace-nowrap ${META_CLASS[metaLayout]}`}
+        >
           <span className="inline-flex items-center gap-1.5">
             <Clock aria-hidden="true" className="size-5 text-slate" />
             {formatDuration(min, max)}

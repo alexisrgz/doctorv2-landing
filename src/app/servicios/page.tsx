@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { MobileActionBar } from "@/components/mobile-bar";
 import { PageHeader } from "@/components/page-header";
 import { Section, SectionHeader } from "@/components/section";
+import { cardGridClasses, columnsFor, metaLayoutFor } from "@/components/card-grid";
 import { ServiceCard } from "@/components/service-card";
 import { buttonClasses } from "@/components/ui/button-styles";
 import { actions } from "@/data/pages/common";
@@ -51,6 +52,7 @@ export default function ServicesPage() {
 
       {serviceGroups.map((group, index) => {
         const titleId = `${group.anchor}-titulo`;
+        const groupServices = getServicesByGroup(group.id);
         return (
           <Section
             key={group.id}
@@ -61,10 +63,17 @@ export default function ServicesPage() {
             className="scroll-mt-4 lg:scroll-mt-20"
           >
             <SectionHeader id={titleId} title={group.title} intro={group.description} />
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-6">
-              {getServicesByGroup(group.id).map((service) => (
+            <ul
+              data-testid="service-grid"
+              className={`mt-8 grid gap-4 lg:mt-12 lg:gap-6 ${cardGridClasses(groupServices.length)}`}
+            >
+              {groupServices.map((service) => (
                 <li key={service.slug}>
-                  <ServiceCard service={service} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
+                  <ServiceCard
+                    service={service}
+                    metaLayout={metaLayoutFor(groupServices.length)}
+                    sizes={`(min-width: 1024px) ${columnsFor(groupServices.length) === 4 ? 270 : 380}px, (min-width: 640px) 50vw, 100vw`}
+                  />
                 </li>
               ))}
             </ul>
