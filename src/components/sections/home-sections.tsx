@@ -50,12 +50,12 @@ export function HomeHero() {
             <BookingLink
               source="hero"
               data-testid="hero-book"
-              className={buttonClasses("primary", "lg", "flex-1 lg:flex-none lg:px-7")}
+              className={buttonClasses("primary", "lg", "flex-1 sm:flex-none sm:px-7")}
             >
               <WhatsAppIcon />
               {actions.book}
             </BookingLink>
-            <CallLink data-testid="hero-call" className={buttonClasses("secondary", "lg", "lg:px-7")}>
+            <CallLink data-testid="hero-call" className={buttonClasses("secondary", "lg", "sm:px-7")}>
               <Phone aria-hidden="true" className="size-5" />
               {actions.call}
             </CallLink>
@@ -123,16 +123,16 @@ export function DoctorSummary() {
   ];
   return (
     <Section labelledBy="doctor-titulo">
-      <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-8">
-        <div className="lg:col-span-5">
+      <div className="grid gap-8 md:grid-cols-12 md:items-center md:gap-8">
+        <div className="md:col-span-5">
           <Photo
             {...photos.doctorHome}
             shape="soft"
-            sizes="(min-width: 1024px) 460px, 100vw"
-            className="max-sm:aspect-[4/3]"
+            sizes="(min-width: 1024px) 460px, (min-width: 768px) 40vw, 100vw"
+            className="max-md:aspect-[4/3]"
           />
         </div>
-        <div className="lg:col-span-6 lg:col-start-7">
+        <div className="md:col-span-7 lg:col-span-6 lg:col-start-7">
           <h2 id="doctor-titulo" className="text-h2">
             {copy.title}
           </h2>

@@ -97,7 +97,7 @@ export default function LocationPage() {
       </Section>
 
       <Section labelledBy="entrada-titulo">
-        <SectionHeader id="entrada-titulo" title={copy.office} intro={practice.directionsHint} />
+        <SectionHeader id="entrada-titulo" title={copy.office} intro={copy.officeIntro} />
         <SnapRow label={copy.office} columns={2} className="mt-8 lg:mt-12">
           {entrancePhotos.map((photo) => (
             <li key={photo.name}>

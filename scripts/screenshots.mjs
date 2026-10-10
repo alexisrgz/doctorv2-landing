@@ -8,10 +8,12 @@ const base = process.env.BASE_URL ?? "http://localhost:3000";
 const routes = process.argv.slice(2).length
   ? process.argv.slice(2)
   : ["/", "/servicios/consulta-general", "/ubicacion"];
-const viewports = [
-  { width: 390, height: 664, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
-  { width: 1280, height: 800, deviceScaleFactor: 1, isMobile: false, hasTouch: false },
-];
+// VIEWPORTS="360x600,768x1024" para otros tamaños (menos de 1024 se emula como táctil).
+const viewports = (process.env.VIEWPORTS ?? "390x664,1280x800").split(",").map((spec) => {
+  const [width, height] = spec.split("x").map(Number);
+  const mobile = width < 1024;
+  return { width, height, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile };
+});
 const fullPage = process.env.FULL !== "0";
 
 mkdirSync("screenshots", { recursive: true });

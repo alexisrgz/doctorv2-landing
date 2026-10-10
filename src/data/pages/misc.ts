@@ -10,6 +10,7 @@ export const locationPage = {
     hours: "Horario",
     hoursNote: "Horario de Mazatlán. Las consultas son con cita.",
     office: "Así es la entrada",
+    officeIntro: "Acceso a nivel de calle con rampa. La sala de espera y el consultorio están en planta baja.",
   },
 } as const;
 

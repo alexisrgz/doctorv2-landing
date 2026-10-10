@@ -31,3 +31,8 @@ Una línea por decisión, con el porqué.
 - Imágenes OG con ImageResponse y las fuentes de marca en WOFF (`src/assets/fonts`, licencia OFL incluida): Satori no lee WOFF2.
 - Favicon generado (`icon.tsx`) con la inicial del apellido tomada de la config, en lugar del favicon de Next del scaffold.
 - Detalle de servicio: `dynamicParams = false` y `generateStaticParams` en la página y en su `opengraph-image`, para que todo sea estático y una URL desconocida dé 404.
+- Revelado del hero con `clip-path: inset(9% 12% 14% 0)` a `inset(0)` (700ms): la foto es visible desde el primer cuadro, así el revelado no retrasa el LCP como lo haría partir de un recorte total.
+- Escalonado del hero: título 0ms, subtítulo 80ms, CTAs 160ms (máximo 250ms); los CTAs empiezan a verse a los 160ms y quedan completos antes de 500ms.
+- Acordeón con `::details-content` + `interpolate-size` (solo CSS): donde no hay soporte, abre sin animación.
+- Con `prefers-reduced-motion: reduce` se anulan todas las animaciones y transiciones, y el scroll suave.
+- En tablet (768px) la sección del doctor en Inicio pasa a dos columnas y los CTAs del hero dejan de ocupar todo el ancho, para no tener una foto de 900px de alto ni botones desproporcionados.

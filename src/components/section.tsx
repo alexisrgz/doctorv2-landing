@@ -61,12 +61,12 @@ type SectionHeaderProps = {
  */
 export function SectionHeader({ id, title, intro, action, className = "", inverse = false }: SectionHeaderProps) {
   return (
-    <div className={`grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-8 ${className}`}>
+    <div className={`grid gap-4 lg:grid-cols-12 lg:items-start lg:gap-8 ${className}`}>
       <h2 id={id} className="text-h2 lg:col-span-6">
         {title}
       </h2>
       {intro || action ? (
-        <div className="flex flex-col gap-3 lg:col-span-5 lg:col-start-8 lg:pb-1">
+        <div className="flex flex-col gap-1 lg:col-span-5 lg:col-start-8 lg:pt-2">
           {intro ? <p className={`max-w-[52ch] ${inverse ? "text-white/85" : "text-slate"}`}>{intro}</p> : null}
           {action ? <div>{action}</div> : null}
         </div>

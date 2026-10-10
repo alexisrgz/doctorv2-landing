@@ -66,7 +66,7 @@ export default function DoctorPage() {
             shape="signature"
             priority
             sizes="(min-width: 1024px) 370px, 100vw"
-            className="max-sm:aspect-square"
+            className="max-sm:aspect-square sm:max-w-[420px] lg:max-w-none"
           />
         }
       />
