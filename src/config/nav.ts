@@ -1,15 +1,17 @@
 export type NavItem = {
   href: string;
   label: string;
+  /** Etiqueta corta, solo para el header de escritorio. Menú móvil, footer y títulos usan label. */
+  shortLabel?: string;
 };
 
 /** Menú principal (5 entradas). */
 export const mainNav: readonly NavItem[] = [
   { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios y chequeos" },
+  { href: "/servicios", label: "Servicios y chequeos", shortLabel: "Servicios" },
   { href: "/el-doctor", label: "El doctor" },
   { href: "/primera-consulta", label: "Tu primera consulta" },
-  { href: "/ubicacion", label: "Ubicación y contacto" },
+  { href: "/ubicacion", label: "Ubicación y contacto", shortLabel: "Ubicación" },
 ];
 
 /** Enlaces secundarios que solo viven en el footer. */

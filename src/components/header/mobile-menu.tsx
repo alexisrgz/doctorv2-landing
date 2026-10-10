@@ -41,7 +41,7 @@ export function MobileMenu({ brand, footer }: { brand: ReactNode; footer?: React
         aria-expanded={open}
         aria-controls={MENU_ID}
         aria-haspopup="dialog"
-        className="-mr-2 inline-flex size-12 items-center justify-center rounded-control text-ink hover:bg-mist xl:hidden"
+        className="-mr-2 inline-flex size-12 items-center justify-center rounded-control text-ink hover:bg-mist nav:hidden"
       >
         <Menu aria-hidden="true" className="size-6" />
         <span className="sr-only">Abrir menú</span>

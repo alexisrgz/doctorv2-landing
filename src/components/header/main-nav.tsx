@@ -16,24 +16,28 @@ type NavLinksProps = {
   /** Clases extra del enlace activo (los inactivos llevan no-underline). */
   activeClassName?: string;
   onNavigate?: () => void;
+  /** Usa shortLabel cuando existe (solo header de escritorio). */
+  short?: boolean;
 };
 
 /** Lista de enlaces con aria-current según la ruta actual. */
-export function NavLinks({ items, linkClassName, activeClassName = "", onNavigate }: NavLinksProps) {
+export function NavLinks({ items, linkClassName, activeClassName = "", onNavigate, short = false }: NavLinksProps) {
   const pathname = usePathname();
   return (
     <>
       {items.map((item) => {
         const active = isActivePath(pathname, item.href);
+        const shortened = short && item.shortLabel ? item.shortLabel : undefined;
         return (
           <li key={item.href}>
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
+              aria-label={shortened ? item.label : undefined}
               className={`${linkClassName} ${active ? activeClassName : "no-underline"}`}
               onClick={onNavigate}
             >
-              {item.label}
+              {shortened ?? item.label}
             </Link>
           </li>
         );

@@ -20,18 +20,19 @@ function Brand() {
 
 /**
  * Header: 56px en móvil (marca + menú), 72px y fijo en desktop.
- * 1024–1279px: marca + "Agendar cita" + menú. ≥1280px: navegación completa.
+ * 1024–1099px: marca + "Agendar cita" + menú. ≥1100px: navegación en línea con etiquetas cortas.
  */
 export function SiteHeader() {
   return (
     <header className="z-40 border-b border-line bg-white lg:sticky lg:top-0">
       <div className="container-page flex h-14 items-center justify-between gap-4 lg:h-[72px]">
         <Brand />
-        <nav aria-label="Principal" className="hidden xl:block">
-          <ul className="flex items-center gap-0.5">
+        <nav aria-label="Principal" className="hidden nav:block">
+          <ul className="flex items-center">
             <NavLinks
               items={mainNav}
-              linkClassName="inline-flex min-h-12 items-center rounded-control px-3 text-[16px] font-bold text-ink hover:bg-mist"
+              short
+              linkClassName="inline-flex min-h-12 items-center rounded-control px-3 text-[16px] font-bold whitespace-nowrap text-ink hover:bg-mist"
               activeClassName="underline decoration-2 underline-offset-[6px]"
             />
           </ul>

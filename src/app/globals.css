@@ -16,6 +16,9 @@
   --color-line: rgb(18 48 77 / 0.12); /* Tinta al 12 % */
   --color-line-inverse: rgb(255 255 255 / 0.24);
 
+  /* Navegación en línea del header desde 1100px (variante `nav:`). */
+  --breakpoint-nav: 1100px;
+
   --shadow-*: initial;
   --inset-shadow-*: initial;
   --drop-shadow-*: initial;
