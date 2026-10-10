@@ -45,8 +45,8 @@ export type ServicePhoto = {
 export type Service = {
   slug: string;
   name: string;
-  /** Nombre corto para espacios reducidos (barra móvil); si falta, se usa name. */
-  shortName?: string;
+  /** Nombre corto para la barra móvil ("Agendar · {shortName}"). El mensaje de WhatsApp usa name. */
+  shortName: string;
   group: ServiceGroupId;
   /** Una línea para tarjetas y metadatos. */
   summary: string;
@@ -84,6 +84,7 @@ export const services: readonly Service[] = [
   {
     slug: "consulta-general",
     name: "Consulta general",
+    shortName: "Consulta general",
     group: "consultas",
     summary: "Valoración de tus síntomas, revisión física completa e indicaciones claras por escrito.",
     includes: [
@@ -178,6 +179,7 @@ export const services: readonly Service[] = [
   {
     slug: "certificado-medico",
     name: "Certificado médico",
+    shortName: "Certificado médico",
     group: "consultas",
     summary: "Revisión física y certificado de salud para escuela, trabajo o actividad deportiva.",
     includes: [
@@ -360,7 +362,7 @@ export const services: readonly Service[] = [
   {
     slug: "chequeo-escolar-deportivo",
     name: "Chequeo escolar y deportivo",
-    shortName: "Chequeo escolar",
+    shortName: "Chequeo escolar y deportivo",
     group: "chequeos",
     summary: "Revisión de crecimiento, vista y salud general para el regreso a clases o para empezar un deporte.",
     includes: [

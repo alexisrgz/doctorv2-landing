@@ -126,7 +126,6 @@ export default async function ServiceDetailPage({ params }: PageProps<"/servicio
           <div className="lg:sticky lg:top-24">
             <ServiceBooking
               slug={service.slug}
-              name={service.name}
               shortName={service.shortName}
               variants={service.variants}
               priceNote={service.priceNote}

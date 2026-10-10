@@ -1,8 +1,9 @@
 type ButtonVariant = "primary" | "secondary" | "inverse";
-type ButtonSize = "lg" | "md";
+/** "bare": sin padding, altura ni alineación, para botones con disposición propia. */
+type ButtonSize = "lg" | "md" | "bare";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-control text-[17px] font-bold leading-tight no-underline select-none text-center";
+  "inline-flex items-center gap-2 rounded-control text-[17px] font-bold leading-tight no-underline select-none text-center";
 
 const variants: Record<ButtonVariant, string> = {
   // Coral siempre con texto Tinta (contraste ~5:1).
@@ -13,8 +14,9 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
-  lg: "min-h-[52px] px-5",
-  md: "min-h-12 px-4",
+  lg: "min-h-[52px] justify-center px-5",
+  md: "min-h-12 justify-center px-4",
+  bare: "",
 };
 
 export function buttonClasses(variant: ButtonVariant = "primary", size: ButtonSize = "lg", extra = ""): string {

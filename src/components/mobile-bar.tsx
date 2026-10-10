@@ -5,13 +5,21 @@ import type { ReactNode } from "react";
 import { actions } from "@/data/pages/common";
 import { BookingLink } from "./booking-link";
 import { CallLink } from "./call-link";
-import { useAfterHero } from "./hooks/use-after-hero";
+import { useBarVisibility, type BarVisibilityOptions } from "./hooks/use-bar-visibility";
 import { WhatsAppIcon } from "./icons/whatsapp-icon";
 import { buttonClasses } from "./ui/button-styles";
 
-/** Contenedor de la barra fija inferior (solo < 1024px). Entra cuando el hero sale de pantalla. */
-export function MobileBarFrame({ label, children }: { label: string; children: ReactNode }) {
-  const visible = useAfterHero();
+type MobileBarFrameProps = BarVisibilityOptions & {
+  label: string;
+  children: ReactNode;
+};
+
+/**
+ * Contenedor de la barra fija inferior (solo < 1024px).
+ * Por defecto entra cuando el hero sale de pantalla; ver useBarVisibility para las variantes.
+ */
+export function MobileBarFrame({ label, children, ...visibility }: MobileBarFrameProps) {
+  const visible = useBarVisibility(visibility);
   return (
     <aside
       aria-label={label}
