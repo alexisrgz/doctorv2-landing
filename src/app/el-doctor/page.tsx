@@ -121,7 +121,7 @@ export default function DoctorPage() {
 
       <Section labelledBy="consultorio-titulo">
         <SectionHeader id="consultorio-titulo" title={copy.office} intro={copy.officeIntro} />
-        <SnapRow label={copy.office} columns={3} className="mt-8 lg:mt-12">
+        <SnapRow label={copy.office} columns={3} focusable className="mt-8 lg:mt-12">
           {officePhotos.map((photo) => (
             <li key={photo.name}>
               <Photo {...photo} shape="soft" sizes="(min-width: 1024px) 380px, 82vw" />

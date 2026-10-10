@@ -139,6 +139,19 @@
     outline-color: var(--color-white);
   }
 
+  button,
+  summary,
+  label:has(> input[type="radio"]) {
+    cursor: pointer;
+  }
+
+  a,
+  button,
+  summary,
+  label {
+    touch-action: manipulation;
+  }
+
   ::selection {
     background-color: var(--color-mist);
     color: var(--color-ink);

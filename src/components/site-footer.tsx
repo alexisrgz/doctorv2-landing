@@ -2,14 +2,14 @@ import Link from "next/link";
 import { footerNav, mainNav } from "@/config/nav";
 import { site } from "@/config/site";
 import { doctor } from "@/data/doctor";
-import { actions, labels } from "@/data/pages/common";
+import { actions, labels, srNotes } from "@/data/pages/common";
 import { getAddressLines, getMapsHref, getPhoneDisplay } from "@/lib/contact";
 import { BookingLink } from "./booking-link";
 import { CallLink } from "./call-link";
 import { OpenStatus } from "./open-status";
 
 const footerLink =
-  "inline-flex min-h-12 items-center text-white underline decoration-[1.5px] underline-offset-[3px] hover:decoration-[2.5px]";
+  "inline-flex min-h-12 min-w-12 items-center text-white underline decoration-[1.5px] underline-offset-[3px] hover:decoration-[2.5px]";
 
 /** Footer en banda Tinta. Lleva el único aviso de sitio de demostración. */
 export function SiteFooter() {
@@ -41,6 +41,7 @@ export function SiteFooter() {
             <li>
               <a href={getMapsHref()} target="_blank" rel="noopener noreferrer" className={footerLink}>
                 {actions.directions}
+                <span className="sr-only">{srNotes.newTab}</span>
               </a>
             </li>
             <li>

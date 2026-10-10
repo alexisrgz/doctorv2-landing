@@ -1,5 +1,5 @@
 import { MapPin, Navigation, Phone } from "lucide-react";
-import { actions, labels } from "@/data/pages/common";
+import { actions, labels, srNotes } from "@/data/pages/common";
 import { practice } from "@/data/practice";
 import { getAddressLines, getMapsHref, getPhoneDisplay } from "@/lib/contact";
 import { CallLink } from "./call-link";
@@ -33,6 +33,7 @@ export function LocationCard({ showPhone = false, className = "" }: { showPhone?
         >
           <Navigation aria-hidden="true" className="size-5" />
           {actions.directions}
+          <span className="sr-only">{srNotes.newTab}</span>
         </a>
         {showPhone ? (
           <CallLink className={buttonClasses("secondary", "md", "sm:flex-1")}>
