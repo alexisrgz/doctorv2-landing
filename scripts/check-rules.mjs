@@ -135,6 +135,21 @@ const required = [
   "src/lib/hours.ts",
   "src/lib/jsonld.ts",
   "src/components/photo.tsx",
+  "src/components/booking-link.tsx",
+  "src/components/open-status.tsx",
+  "src/components/service-booking.tsx",
+  "src/app/page.tsx",
+  "src/app/servicios/page.tsx",
+  "src/app/servicios/[slug]/page.tsx",
+  "src/app/el-doctor/page.tsx",
+  "src/app/primera-consulta/page.tsx",
+  "src/app/ubicacion/page.tsx",
+  "src/app/preguntas-frecuentes/page.tsx",
+  "src/app/aviso-de-privacidad/page.tsx",
+  "src/app/not-found.tsx",
+  "src/app/sitemap.ts",
+  "src/app/robots.ts",
+  "src/app/opengraph-image.tsx",
 ];
 for (const file of required) {
   if (!existsSync(join(root, file))) fail(`falta el archivo requerido: ${file}`);

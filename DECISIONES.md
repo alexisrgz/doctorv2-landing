@@ -20,3 +20,14 @@ Una línea por decisión, con el porqué.
 - Mensajes de estado de horario: "Abierto hoy hasta las 19:00" y "Cerrado ahora. Abre … a las …" (punto en lugar de "·", para no usar textos tipo "A · B").
 - `scripts/check-rules.mjs` importa `src/config/site.ts` y `src/data/services.ts` con el soporte nativo de TypeScript de Node (≥ 22.18), para derivar los términos prohibidos de la config y no duplicarlos. Además de lo pedido, bloquea "→", `uppercase`, `italic`, `100vh` y frases de publicidad de salud prohibidas.
 - Pruebas de utilidades (booking y horarios) dentro de Playwright, sin navegador, para no añadir otro runner.
+- Header: navegación completa desde 1280px; entre 1024 y 1279px se muestran marca + "Agendar cita" + botón de menú, porque las 5 entradas no caben junto al botón sin bajar el texto a menos de 15px.
+- Menú móvil con `<dialog>` modal (`showModal`): el navegador aporta el focus trap, Esc y el fondo inerte; se cierra al navegar y al cambiar de ruta.
+- La barra inferior móvil se monta por página (no en el layout) porque el detalle de servicio usa su propia barra "Agendar · {servicio}" con el estado de la variante.
+- El espacio de la barra inferior se reserva como padding inferior del footer (banda Tinta) en lugar de en el body, para que no quede una franja blanca bajo el footer; el efecto es el mismo: la barra nunca tapa contenido.
+- `<OpenStatus>` y la tabla de horarios usan `useSyncExternalStore` con snapshot de servidor `null`: el HTML del servidor dice "Consultando horario…" y el cliente calcula después de hidratar, sin hydration mismatch, revisando el minuto cada 15 s.
+- Tarjetas de servicio: toda la tarjeta es el enlace, con `aria-labelledby` al nombre y `aria-describedby` al resumen, para que el nombre accesible sea corto y el área táctil sea grande.
+- Selector de variante con radios nativos (teclado y lectores de pantalla sin código extra); segmentos con radio 10px dentro del contenedor de 14px (radios concéntricos).
+- `shortName` opcional en servicios, para que "Agendar · {servicio}" quepa en la barra móvil a 360px.
+- Imágenes OG con ImageResponse y las fuentes de marca en WOFF (`src/assets/fonts`, licencia OFL incluida): Satori no lee WOFF2.
+- Favicon generado (`icon.tsx`) con la inicial del apellido tomada de la config, en lugar del favicon de Next del scaffold.
+- Detalle de servicio: `dynamicParams = false` y `generateStaticParams` en la página y en su `opengraph-image`, para que todo sea estático y una URL desconocida dé 404.

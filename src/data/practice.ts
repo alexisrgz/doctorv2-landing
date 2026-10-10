@@ -3,6 +3,9 @@ export const practice = {
   emergencyNotice: "Este consultorio no es servicio de urgencias. En una urgencia médica llama al 911.",
   payments: {
     title: "Formas de pago y seguros",
+    methodsTitle: "Formas de pago",
+    receiptTitle: "Recibo y factura",
+    insuranceTitle: "Seguros",
     methods: ["Efectivo", "Tarjeta de débito y crédito", "Transferencia bancaria"],
     receipt: "Se entrega recibo de honorarios en cada consulta. Si necesitas factura, pídela al agendar.",
     insurance:
