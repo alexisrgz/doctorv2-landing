@@ -17,7 +17,7 @@ export function ClosingCta({
   source: string;
 }) {
   return (
-    <Section tone="ink" labelledBy="cierre-titulo" className="lg:py-20">
+    <Section tone="ink" labelledBy="cierre-titulo" barStop data-testid="closing-cta" className="lg:py-20">
       <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
           <h2 id="cierre-titulo" className="text-h2">

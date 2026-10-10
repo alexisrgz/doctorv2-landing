@@ -19,6 +19,8 @@ type SectionProps = {
   labelledBy?: string;
   className?: string;
   children: ReactNode;
+  /** Marca la sección como zona donde la barra inferior móvil se oculta. */
+  barStop?: boolean;
   "data-testid"?: string;
 };
 
@@ -29,6 +31,7 @@ export function Section({
   labelledBy,
   className = "",
   children,
+  barStop = false,
   ...rest
 }: SectionProps) {
   return (
@@ -36,6 +39,7 @@ export function Section({
       id={id}
       aria-labelledby={labelledBy}
       data-testid={rest["data-testid"]}
+      data-bar-stop={barStop ? "true" : undefined}
       className={`${TONE_CLASS[tone]} ${roundedTop ? "rounded-t-band" : ""} py-14 lg:py-24 ${className}`}
     >
       <div className="container-page">{children}</div>

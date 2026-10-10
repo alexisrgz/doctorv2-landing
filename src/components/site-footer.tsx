@@ -17,7 +17,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="on-ink bg-ink pt-14 pb-[calc(var(--mobile-bar-height)+env(safe-area-inset-bottom)+24px)] text-white lg:pt-20 lg:pb-10">
+    <footer data-bar-stop="true" className="on-ink bg-ink pt-14 pb-[calc(var(--mobile-bar-height)+env(safe-area-inset-bottom)+24px)] text-white lg:pt-20 lg:pb-10">
       <div className="container-page grid gap-10 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <p className="font-display text-[28px] leading-none font-bold tracking-[-0.02em]">{site.name}</p>

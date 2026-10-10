@@ -13,6 +13,7 @@ export type BarVisibilityOptions = {
 export function useBarVisibility({ fromStart = false, hideWhileFullyVisible }: BarVisibilityOptions = {}): boolean {
   const [pastHero, setPastHero] = useState(fromStart);
   const [anchorVisible, setAnchorVisible] = useState(false);
+  const [stopVisible, setStopVisible] = useState(false);
 
   // Regla general: entra cuando el elemento [data-hero] salió por arriba del viewport.
   useEffect(() => {
@@ -46,5 +47,21 @@ export function useBarVisibility({ fromStart = false, hideWhileFullyVisible }: B
     return () => observer.disconnect();
   }, [hideWhileFullyVisible]);
 
-  return pastHero && !anchorVisible;
+  // Se oculta mientras el CTA de cierre o el footer ([data-bar-stop]) están en pantalla.
+  useEffect(() => {
+    const stops = document.querySelectorAll("[data-bar-stop]");
+    if (stops.length === 0) return;
+    const intersecting = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) intersecting.add(entry.target);
+        else intersecting.delete(entry.target);
+      }
+      setStopVisible(intersecting.size > 0);
+    });
+    stops.forEach((stop) => observer.observe(stop));
+    return () => observer.disconnect();
+  }, []);
+
+  return pastHero && !anchorVisible && !stopVisible;
 }
