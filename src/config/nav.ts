@@ -8,8 +8,8 @@ export type NavItem = {
 /** Menú principal (5 entradas). */
 export const mainNav: readonly NavItem[] = [
   { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios y chequeos", shortLabel: "Servicios" },
   { href: "/el-doctor", label: "El doctor" },
+  { href: "/servicios", label: "Servicios y chequeos", shortLabel: "Servicios" },
   { href: "/primera-consulta", label: "Tu primera consulta" },
   { href: "/ubicacion", label: "Ubicación y contacto", shortLabel: "Ubicación" },
 ];
